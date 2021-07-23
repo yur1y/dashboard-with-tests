@@ -10,7 +10,7 @@ import {
 
   import { ResultService } from './results.service';
   
-  @Controller('tests')
+  @Controller('results')
   export class ResultsController {
     constructor(private readonly service: ResultService) {}
   
