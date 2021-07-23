@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Question } from '../questions/question.schema';
 
 export type TestDocument = Test & Document;
@@ -7,12 +7,12 @@ export type TestDocument = Test & Document;
 @Schema()
 export class Test {
   @Prop({ required: true })
-  text: string;
+  name: string;
 
   @Prop({required: true}) 
   time: string;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }] })
+  @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Question' }] })
   questions: Question[];
 
 }
