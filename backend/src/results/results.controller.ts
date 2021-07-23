@@ -8,11 +8,11 @@ import {
     Put,
   } from '@nestjs/common';
 
-  import { TestService } from './test.service';
+  import { ResultService } from './results.service';
   
   @Controller('tests')
-  export class TestController {
-    constructor(private readonly service: TestService) {}
+  export class ResultsController {
+    constructor(private readonly service: ResultService) {}
   
     @Get()
     async index() {
@@ -24,7 +24,7 @@ import {
       return await this.service.findOne(id);
     }
   
-    @Post()
+    @Post() // result get sent 
     async create(@Body() data: any) {
       console.log( data );
       return await this.service.create(data);
