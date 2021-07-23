@@ -10,7 +10,7 @@ const dbURL = 'mongodb://localhost/nest';
   providers: [TestService],
   controllers: [TestController],
   imports: [
-    MongooseModule.forRoot(dbURL, MongooseModule.forFeature([{ name: Test.name, schema: TestSchema }])),
+     MongooseModule.forFeature([{ name: Test.name, schema: TestSchema }]),
   ],
 })
 export class TestsModule {}
