@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tests.component.css']
 })
 export class TestsComponent implements OnInit {
+  tests: number[];
 
-  constructor() { }
+  constructor() {
+    this.tests = [];
+   }
 
   ngOnInit(): void {
+    this.tests = [1,2,3];
   }
 
 }

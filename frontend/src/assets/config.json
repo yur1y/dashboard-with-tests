@@ -1,0 +1,4 @@
+ {  
+     "proxyUrl": "https://cors-anywhere.herokuapp.com/",
+     "apiUrl": "localhost:3000"
+ }

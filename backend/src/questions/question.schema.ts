@@ -11,8 +11,8 @@ export class Question {
   @Prop([String])
   variants: string[];
 
-  @Prop([String])
-  correct: string[];
+  @Prop([Boolean])
+  correct: boolean[];
 
 }
 
