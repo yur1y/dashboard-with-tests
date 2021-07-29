@@ -4,7 +4,7 @@ import { Question } from '../questions/question.schema';
 
 export type TestDocument = Test & Document;
 
-@Schema()
+@Schema({versionKey: false})
 export class Test {
   @Prop({ required: true })
   name: string;

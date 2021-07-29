@@ -27,7 +27,9 @@ import {
   
     @Post()
     async create(@Body() data: any) {
-      console.log(data);
+      if(data && data.length) {
+        return await this.service.createMany(data);        
+      }
       return await this.service.create(data);
     }
   

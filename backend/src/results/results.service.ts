@@ -30,4 +30,8 @@ export class ResultService {
   async delete(id: string): Promise<Result> {
     return await this.model.findByIdAndDelete(id).exec();
   }
+
+  async stats(): Promise<Result> {
+    return await this.model.aggregate([{$group: {_id:null, scores: {$avg:"$score"}, durations: {$avg:"$duration"}  } }]).exec();
+  }
 }

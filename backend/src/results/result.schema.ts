@@ -4,16 +4,19 @@ import { Test } from '../tests/test.schema';
 
 export type ResultDocument = Result & Document;
 
-@Schema()
+@Schema({versionKey: false})
 export class Result {
   @Prop({ required: true })
   score: number; // percents of successfull test questions were answered
 
   @Prop({required: true}) // time that have used before submiting or exiting test
-  time: string;
+  createdAt: string;
+
+  @Prop({ required: true })
+  duration: number;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Test' }) // test id fyi
-  test: Test;
+  test_id: Test;
 
 }
 
