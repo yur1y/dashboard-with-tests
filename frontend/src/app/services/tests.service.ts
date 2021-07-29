@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
-import { catchError} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import config from '../../assets/config.json'
-import { LoggerService } from './logger.service';
+import api from '../../assets/config.json'
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +22,15 @@ export class TestsService {
   });
   }
 
-  saveTest(data: any): Observable<any>{
-    
-  return this.http.post(`${config.apiUrl}/tests`, data).pipe();
+  createTest(data: any): Observable<any>{
+    return this.http.post(`${ api.apiUrl}/tests`, data).pipe();
   }
+  getTests(): Observable<any>{  
+    return this.http.get(`${api.apiUrl}/tests`).pipe()
+}
+
+getTest(id: string): Observable<any>{
+  return this.http.get(`${api.apiUrl}/tests/${id}`).pipe()
+}
+
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TestsService } from '../services/tests.service';
 
 @Component({
   selector: 'app-tests',
@@ -6,14 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tests.component.css']
 })
 export class TestsComponent implements OnInit {
-  tests: number[];
+  tests: any;
 
-  constructor() {
+  constructor(private testsService: TestsService, private router: Router) {
     this.tests = [];
    }
 
   ngOnInit(): void {
-    this.tests = [1,2,3];
+    this.getTests()
+  }
+
+  getTests(): void {
+    this.testsService.getTests()
+      .subscribe(res => { this.tests = res});
   }
 
 }

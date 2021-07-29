@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { ResultsComponent } from './results/results.component';
 import { TestsAddComponent } from './tests/tests-add/tests-add.component';
+import { TestsTakeComponent } from './tests/tests-take/tests-take.component';
 import { TestsComponent } from './tests/tests.component';
 
 const routes: Routes = [
@@ -30,7 +31,10 @@ const routes: Routes = [
     path: 'tests/add',
     component: TestsAddComponent
   },
-
+  {
+    path: 'tests/take/:id',
+    component: TestsTakeComponent
+  },
   {
     path: '**',  
     redirectTo: 'dashboard'

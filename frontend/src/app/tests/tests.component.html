@@ -1,13 +1,11 @@
-<p>tests works!</p>
- <a [routerLink]="['/tests/add']">Add test</a>
+ <a class="btn btn btn-outline-success" [routerLink]="['/tests/add']">Add test</a>
 <div class="row">
     <div *ngFor="let test of tests" class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-          {{test}}
+          <h5 class="card-title">{{test.name}}</h5>
+          <p class="card-text">{{test.time}} min, {{test.questions.length}} questions</p>
+          <a [routerLink]="['/tests/take/', test._id]" class="btn btn-outline-primary">Take</a>
         </div>
       </div>
     </div>

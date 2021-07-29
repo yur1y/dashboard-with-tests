@@ -1,0 +1,24 @@
+
+<div class="row">
+    <h5 class="card-title">{{test.name}}</h5>
+    <p class="card-text">Time: {{test.time}} minutes, {{test.questions?.length}} questions</p>
+    <p class="card-text">Time left: {{showTimeLeft}} </p>
+    <div *ngFor="let q of test.questions;let i = index;" class="col-sm-12" [style.marginTop.rem]="1">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{q.text}}</h5>
+    <div   [style.display]="'flex'" [style.justify-content]="'space-between'" >
+
+          <div [style.width.px]="200"  class="mb-3" *ngFor="let variant of q.variants; let j = index;">
+            <label for="variant{{i}}" class="form-label">Answer {{j +1 }}:</label>
+            <textarea [disabled]="true"  class="form-control" id="variant{{i}}" rows="3" [value]="variant"  ></textarea>
+            <label for="variant{{i}}{{j}}" class="form-label">Correct</label>
+            <input type="checkbox" id="variant{{i}}{{j}}" [checked]="q.correct[j]" (change)="checkCorrect($event)"   />
+          </div>
+          
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+<button (click)="submitTest()" class="btn btn-outline-primary" >Submit</button>

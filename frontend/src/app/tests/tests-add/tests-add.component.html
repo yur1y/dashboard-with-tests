@@ -9,22 +9,23 @@
 </div>
 <div  class="mb-3" *ngFor="let t of test; let i = index;">
     <div [style.width.%]="100">
-        <label for="question{{i}}" class="form-label">question {{i + 1}}: {{t.text}}</label>
+        <label for="question{{i}}" class="form-label">question {{i + 1}}:</label>
     <input type="text" class="form-control" id="question{{i}}" placeholder={{t.text}} [(ngModel)]="t.text" >
 </div>
 <div [style.display]="'flex'" [style.justify-content]="'space-between'" >
 
     <div [style.width.px]="200"  class="mb-3" *ngFor="let variant of t.variants; let j = index;">
-        <label for="variants{{i}}" class="form-label">{{variant}}</label>
-        <textarea  class="form-control" id="variants{{i}}" rows="3" [(ngModel)]="t.variants[j]"></textarea>
+        <label for="variants{{i}}" class="form-label">Answer {{j +1 }}:</label>
+        <textarea  class="form-control" id="variants{{i}}" rows="3" [(ngModel)]="t.variants[j]" [ngModelOptions]="{updateOn: 'blur'}" ></textarea>
       </div>
-      <div [style.width.px]="200"  class="mb-3" *ngFor="let c of t.correct; let k = index;">
-        <label for="variant{{i}}{{k}}" class="form-label">Correct</label>
-        <input type="checkbox"  id="variant{{i}}{{k}}" [(ngModel)]="t.correct[k]" [ngModelOptions]="{standalone: true}" />
-      </div>
-</div>
 
 </div>
-<button (click)="saveTest()" >save test</button>
+<div [style.display]="'flex'" [style.justify-content]="'space-between'" >
 
-<p>tests-add works!</p>
+<div     [style.width.px]="200"  class="mb-3" *ngFor="let c of t.correct; let k = index;">
+    <label for="variant{{i}}{{k}}" class="form-label">Correct</label>
+    <input type="checkbox" id="variant{{i}}{{k}}" [checked]="t.correct[k]" (change)="checkCorrect($event)"   />
+  </div>
+</div>
+</div>
+<button (click)="createTest()" class="btn btn btn-outline-success" >Create test</button>
