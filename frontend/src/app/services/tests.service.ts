@@ -1,12 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+
 import { environment as api } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestsService {
+
+  testCreated: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private http: HttpClient) {}
 
@@ -23,6 +26,7 @@ export class TestsService {
   }
 
   createTest(data: any): Observable<any>{
+    this.testCreated.emit(true);
     return this.http.post(`${ api.apiUrl}/tests`, data).pipe();
   }
   getTests(): Observable<any>{  

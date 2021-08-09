@@ -76,7 +76,7 @@ startTimer() {
     let {_id, questions, createdAt, duration} = this.test;
     questions = questions.map((q:any) => q.correct);
     this.resultsService.submitResult({test_id:_id, questions, createdAt, duration}).subscribe(()=> {
-      this.router.navigate(['results'])
+      this.router.navigate(['dashboard'])
     })
   }
 

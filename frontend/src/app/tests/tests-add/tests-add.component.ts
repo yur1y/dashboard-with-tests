@@ -32,9 +32,7 @@ export class TestsAddComponent implements OnInit {
   createTest():void {
     const {name, time, test:questions} = this
    this.testService.createTest({name, time, questions}).subscribe(()=> {
-    this.router.navigate(['tests']).then(()=>{
-      window.location.reload();
-    })
+    this.router.navigate(['tests'])
    });
   }
 
